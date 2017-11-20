@@ -1,0 +1,2 @@
+## smsgview [address/label|(asc/desc|-from yyyy-mm-dd|-to yyyy-mm-dd)]
+View messages by address.Setting address to '*' will match all addresses'abc*' will match addresses with labels beginning 'abc''*abc' will match addresses with labels ending 'abc'Full date/time format for from and to is yyyy-mm-ddThh:mm:ssFrom and to will accept incomplete inputs like: -from 2016

@@ -1,0 +1,17 @@
+<h2>gettxoutproof [&quot;txid&quot;,...] ( blockhash )</h2>
+<p>Returns a hex-encoded proof that &quot;txid&quot; was included in a block.</p>
+<h2>NOTE: By default this function only works sometimes. This is when there is an</h2>
+<p>unspent output in the utxo for this transaction. To make it always work,
+you need to maintain a transaction index, using the -txindex command line option or
+specify the block in which the transaction is included manually (by blockhash).</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txids&quot;       (string) A json array of txids to filter
+[
+&quot;txid&quot;     (string) A transaction hash
+,...
+]</li>
+<li>&quot;blockhash&quot;   (string, optional) If specified, looks for txid in the block with this hash</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;data&quot;           (string) A string that is a serialized, hex-encoded data for the proof.</p>

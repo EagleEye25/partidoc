@@ -1,0 +1,34 @@
+<h2>getmempoolancestors txid (verbose)</h2>
+<p>If txid is in the mempool, returns all in-mempool ancestors.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txid&quot;                 (string, required) The transaction id (must be in mempool)</li>
+<li>verbose                  (boolean, optional, default=false) True for a json object, false for array of transaction ids</li>
+</ol>
+<p>Result (for verbose=false):
+[                       (json array of strings)
+&quot;transactionid&quot;           (string) The transaction id of an in-mempool ancestor transaction
+,...
+]</p>
+<p>Result (for verbose=true):
+{                           (json object)
+&quot;transactionid&quot; : {       (json object)
+&quot;size&quot; : n,             (numeric) virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted.
+&quot;fee&quot; : n,              (numeric) transaction fee in PART
+&quot;modifiedfee&quot; : n,      (numeric) transaction fee with fee deltas used for mining priority
+&quot;time&quot; : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT
+&quot;height&quot; : n,           (numeric) block height when transaction entered pool
+&quot;descendantcount&quot; : n,  (numeric) number of in-mempool descendant transactions (including this one)
+&quot;descendantsize&quot; : n,   (numeric) virtual transaction size of in-mempool descendants (including this one)
+&quot;descendantfees&quot; : n,   (numeric) modified fees (see above) of in-mempool descendants (including this one)
+&quot;ancestorcount&quot; : n,    (numeric) number of in-mempool ancestor transactions (including this one)
+&quot;ancestorsize&quot; : n,     (numeric) virtual transaction size of in-mempool ancestors (including this one)
+&quot;ancestorfees&quot; : n,     (numeric) modified fees (see above) of in-mempool ancestors (including this one)
+&quot;depends&quot; : [           (array) unconfirmed transactions used as inputs for this transaction
+&quot;transactionid&quot;,    (string) parent transaction id
+... ]
+}, ...
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getmempoolancestors &quot;mytxid&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getmempoolancestors&quot;, &quot;params&quot;: [&quot;mytxid&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

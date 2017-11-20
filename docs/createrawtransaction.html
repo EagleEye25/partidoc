@@ -1,0 +1,34 @@
+<h2>createrawtransaction [{&quot;txid&quot;:&quot;id&quot;,&quot;vout&quot;:n},...] {&quot;address&quot;:amount,&quot;data&quot;:&quot;hex&quot;,...} ( locktime ) ( replaceable )</h2>
+<p>Create a transaction spending the given inputs and creating new outputs.
+Outputs can be addresses or data.
+Returns hex-encoded raw transaction.
+Note that the transaction's inputs are not signed, and
+it is not stored in the wallet or transmitted to the network.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;inputs&quot;                (array, required) A json array of json objects
+[
+{
+&quot;txid&quot;:&quot;id&quot;,    (string, required) The transaction id
+&quot;vout&quot;:n,         (numeric, required) The output number
+&quot;sequence&quot;:n      (numeric, optional) The sequence number
+}
+,...
+]</li>
+<li>&quot;outputs&quot;               (object, required) a json object with outputs
+{
+&quot;address&quot;: x.xxx     (numeric or string, required) The key is the particl address, the numeric value (can be string) is the PART amount
+&quot;data&quot;: &quot;hex&quot;,     (string, required) The key is &quot;data&quot;, the value is hex encoded data
+...
+}</li>
+<li>locktime                  (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs</li>
+<li>replaceable               (boolean, optional, default=false) Marks this transaction as BIP125 replaceable.
+Allows this transaction to be replaced by a transaction with higher fees. If provided, it is an error if explicit sequence numbers are incompatible.</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;transaction&quot;              (string) hex string of the transaction</p>
+<h2>Examples:</h2>
+<p><code>particl-cli createrawtransaction &quot;[{\&quot;txid\&quot;:\&quot;myid\&quot;,\&quot;vout\&quot;:0}]&quot; &quot;{\&quot;address\&quot;:0.01}&quot;</code>
+<code>particl-cli createrawtransaction &quot;[{\&quot;txid\&quot;:\&quot;myid\&quot;,\&quot;vout\&quot;:0}]&quot; &quot;{\&quot;data\&quot;:\&quot;00010203\&quot;}&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;createrawtransaction&quot;, &quot;params&quot;: [&quot;[{\&quot;txid\&quot;:\&quot;myid\&quot;,\&quot;vout\&quot;:0}]&quot;, &quot;{\&quot;address\&quot;:0.01}&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;createrawtransaction&quot;, &quot;params&quot;: [&quot;[{\&quot;txid\&quot;:\&quot;myid\&quot;,\&quot;vout\&quot;:0}]&quot;, &quot;{\&quot;data\&quot;:\&quot;00010203\&quot;}&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

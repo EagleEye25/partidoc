@@ -1,0 +1,9 @@
+<h2>backupwallet &quot;destination&quot;</h2>
+<p>Safely copies current wallet file to destination, which can be a directory or a path with filename.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;destination&quot;   (string) The destination directory or file</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli backupwallet &quot;backup.dat&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;backupwallet&quot;, &quot;params&quot;: [&quot;backup.dat&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

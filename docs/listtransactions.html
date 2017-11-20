@@ -1,0 +1,60 @@
+<h2>listtransactions ( &quot;account&quot; count skip include_watchonly)</h2>
+<p>Returns up to 'count' most recent transactions skipping the first 'from' transactions for account 'account'.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;account&quot;        (string, optional) DEPRECATED. The account name. Should be &quot;*&quot;.</li>
+<li>count              (numeric, optional, default=10) The number of transactions to return</li>
+<li>skip               (numeric, optional, default=0) The number of transactions to skip</li>
+<li>include_watchonly  (bool, optional, default=false) Include transactions to watch-only addresses (see 'importaddress')
+Coldstake transactions are classed as watch-only.</li>
+</ol>
+<h2>Result:</h2>
+<p>[
+{
+&quot;account&quot;:&quot;accountname&quot;,       (string) DEPRECATED. The account name associated with the transaction.
+It will be &quot;&quot; for the default account.
+&quot;address&quot;:&quot;address&quot;,           (string) The particl address of the transaction. Not present for
+move transactions (category = move).
+&quot;category&quot;:&quot;send|receive|move|coinbase|stake|orphaned_stake&quot;,
+(string) The transaction category. 'move' is a local (off blockchain)
+transaction between accounts, and not associated with an address,
+transaction id or block. 'send' and 'receive' transactions are
+associated with an address, transaction id and block details
+'orphaned_stake' transactions are failed stake attempts.
+&quot;amount&quot;: x.xxx,          (numeric) The amount in PART. This is negative for the 'send' category, and for the
+'move' category for moves outbound. It is positive for the 'receive' category,
+and for the 'move' category for inbound funds.
+&quot;label&quot;: &quot;label&quot;,       (string) A comment for the address/transaction, if any
+&quot;vout&quot;: n,                (numeric) the vout value
+&quot;fee&quot;: x.xxx,             (numeric) The amount of the fee in PART. This is negative and only available for the
+'send' category of transactions.
+&quot;confirmations&quot;: n,       (numeric) The number of confirmations for the transaction. Available for 'send' and
+'receive' category of transactions. Negative confirmations indicate the
+transaction conflicts with the block chain
+&quot;trusted&quot;: true|false,      (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.
+&quot;blockhash&quot;: &quot;hashvalue&quot;, (string) The block hash containing the transaction. Available for 'send' and 'receive'
+category of transactions.
+&quot;blockindex&quot;: n,          (numeric) The index of the transaction in the block that includes it. Available for 'send' and 'receive'
+category of transactions.
+&quot;blocktime&quot;: xxx,         (numeric) The block time in seconds since epoch (midnight 1 Jan 1970 GMT).
+&quot;txid&quot;: &quot;transactionid&quot;, (string) The transaction id. Available for 'send' and 'receive' category of transactions.
+&quot;time&quot;: xxx,              (numeric) The transaction time in seconds since epoch (midnight Jan 1 1970 GMT).
+&quot;timereceived&quot;: xxx,      (numeric) The time received in seconds since epoch (midnight Jan 1 1970 GMT). Available
+for 'send' and 'receive' category of transactions.
+&quot;comment&quot;: &quot;...&quot;,       (string) If a comment is associated with the transaction.
+&quot;otheraccount&quot;: &quot;accountname&quot;,  (string) DEPRECATED. For the 'move' category of transactions, the account the funds came
+from (for receiving funds, positive amounts), or went to (for sending funds,
+negative amounts).
+&quot;bip125_replaceable&quot;: &quot;yes|no|unknown&quot;,  (string) Whether this transaction could be replaced due to BIP125 (replace-by-fee);
+may be unknown for unconfirmed transactions not in the mempool
+&quot;abandoned&quot;: true|false    (bool) 'true' if the transaction has been abandoned (inputs are respendable). Only available for the
+'send' category of transactions.
+}
+]</p>
+<h2>Examples:</h2>
+<p>List the most recent 10 transactions in the systems
+<code>particl-cli listtransactions</code></p>
+<p>List transactions 100 to 120
+<code>particl-cli listtransactions &quot;*&quot; 20 100</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listtransactions&quot;, &quot;params&quot;: [&quot;*&quot;, 20, 100] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

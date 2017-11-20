@@ -1,0 +1,22 @@
+<h2>listlockunspent</h2>
+<p>Returns list of temporarily unspendable outputs.
+See the lockunspent call to lock and unlock transactions for spending.</p>
+<h2>Result:</h2>
+<p>[
+{
+&quot;txid&quot; : &quot;transactionid&quot;,     (string) The transaction id locked
+&quot;vout&quot; : n                      (numeric) The vout value
+}
+,...
+]</p>
+<h2>Examples:</h2>
+<p>List the unspent transactions
+<code>particl-cli listunspent</code></p>
+<p>Lock an unspent transaction
+<code>particl-cli lockunspent false &quot;[{\&quot;txid\&quot;:\&quot;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&quot;,\&quot;vout\&quot;:1}]&quot;</code></p>
+<p>List the locked transactions
+<code>particl-cli listlockunspent</code></p>
+<p>Unlock the transaction again
+<code>particl-cli lockunspent true &quot;[{\&quot;txid\&quot;:\&quot;a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\&quot;,\&quot;vout\&quot;:1}]&quot;</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listlockunspent&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

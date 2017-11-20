@@ -1,0 +1,2 @@
+## smsgenable 
+Enable secure messaging.

@@ -1,0 +1,52 @@
+<h2>fundrawtransaction &quot;hexstring&quot; ( options )</h2>
+<p>Add inputs to a transaction until it has enough in value to meet its out value.
+This will not modify existing inputs, and will add at most one change output to the outputs.
+No existing outputs will be modified unless &quot;subtractFeeFromOutputs&quot; is specified.
+Note that inputs which were signed may need to be resigned after completion since in/outputs have been added.
+The inputs added will not be signed, use signrawtransaction for that.
+Note that all existing inputs must have their previous output transaction be in the wallet.
+Note that all inputs selected must be of standard form and P2SH scripts must be
+in the wallet using importaddress or addmultisigaddress (to calculate fees).
+You can see whether this is the case by checking the &quot;solvable&quot; field in the listunspent output.
+Only pay-to-pubkey, multisig, and P2SH versions thereof are currently supported for watch-only</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;hexstring&quot;           (string, required) The hex string of the raw transaction</li>
+<li>&quot;options&quot;             (object, optional)
+{
+&quot;changeAddress&quot;          (string, optional, default pool address) The particl address to receive the change
+&quot;changePosition&quot;         (numeric, optional, default random) The index of the change output
+&quot;includeWatching&quot;        (boolean, optional, default false) Also select inputs which are watch only
+&quot;lockUnspents&quot;           (boolean, optional, default false) Lock selected unspent outputs
+&quot;feeRate&quot;                (numeric, optional, default not set: makes wallet determine the fee) Set a specific feerate (PART per KB)
+&quot;subtractFeeFromOutputs&quot; (array, optional) A json array of integers.
+The fee will be equally deducted from the amount of each specified output.
+The outputs are specified by their zero-based index, before any change output is added.
+Those recipients will receive less coins than you enter in their corresponding amount field.
+If no outputs are specified here, the sender pays the fee.
+[vout_index,...]
+&quot;replaceable&quot;            (boolean, optional) Marks this transaction as BIP125 replaceable.
+Allows this transaction to be replaced by a transaction with higher fees
+&quot;conf_target&quot;            (numeric, optional) Confirmation target (in blocks)
+&quot;estimate_mode&quot;          (string, optional, default=UNSET) The fee estimate mode, must be one of:
+&quot;UNSET&quot;
+&quot;ECONOMICAL&quot;
+&quot;CONSERVATIVE&quot;
+}
+for backward compatibility: passing in a true instead of an object will result in {&quot;includeWatching&quot;:true}</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;hex&quot;:       &quot;value&quot;, (string)  The resulting raw transaction (hex-encoded string)
+&quot;fee&quot;:       n,         (numeric) Fee in PART the resulting transaction pays
+&quot;changepos&quot;: n          (numeric) The position of the added change output, or -1
+}</p>
+<h2>Examples:</h2>
+<p>Create a transaction with no inputs
+<code>particl-cli createrawtransaction &quot;[]&quot; &quot;{\&quot;myaddress\&quot;:0.01}&quot;</code></p>
+<p>Add sufficient unsigned inputs to meet the output value
+<code>particl-cli fundrawtransaction &quot;rawtransactionhex&quot;</code></p>
+<p>Sign the transaction
+<code>particl-cli signrawtransaction &quot;fundedtransactionhex&quot;</code></p>
+<p>Send the transaction
+<code>particl-cli sendrawtransaction &quot;signedtransactionhex&quot;</code></p>

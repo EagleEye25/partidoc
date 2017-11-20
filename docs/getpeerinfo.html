@@ -1,0 +1,49 @@
+<h2>getpeerinfo</h2>
+<p>Returns data about each connected network node as a json array of objects.</p>
+<h2>Result:</h2>
+<p>[
+{
+&quot;id&quot;: n,                   (numeric) Peer index
+&quot;addr&quot;:&quot;host:port&quot;,      (string) The IP address and port of the peer
+&quot;addrbind&quot;:&quot;ip:port&quot;,    (string) Bind address of the connection to the peer
+&quot;addrlocal&quot;:&quot;ip:port&quot;,   (string) Local address as reported by the peer
+&quot;services&quot;:&quot;xxxxxxxxxxxxxxxx&quot;,   (string) The services offered
+&quot;services_str&quot;:&quot;string&quot;, (string) The services offered, human readable
+&quot;relaytxes&quot;:true|false,    (boolean) Whether peer has asked us to relay transactions to it
+&quot;lastsend&quot;: ttt,           (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last send
+&quot;lastrecv&quot;: ttt,           (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last receive
+&quot;bytessent&quot;: n,            (numeric) The total bytes sent
+&quot;bytesrecv&quot;: n,            (numeric) The total bytes received
+&quot;conntime&quot;: ttt,           (numeric) The connection time in seconds since epoch (Jan 1 1970 GMT)
+&quot;timeoffset&quot;: ttt,         (numeric) The time offset in seconds
+&quot;pingtime&quot;: n,             (numeric) ping time (if available)
+&quot;minping&quot;: n,              (numeric) minimum observed ping time (if any at all)
+&quot;pingwait&quot;: n,             (numeric) ping wait (if non-zero)
+&quot;version&quot;: v,              (numeric) The peer version, such as 7001
+&quot;subver&quot;: &quot;/Satoshi:0.8.5/&quot;,  (string) The string version
+&quot;inbound&quot;: true|false,     (boolean) Inbound (true) or Outbound (false)
+&quot;addnode&quot;: true|false,     (boolean) Whether connection was due to addnode and is using an addnode slot
+&quot;startingheight&quot;: n,       (numeric) The starting height (block) of the peer
+&quot;currentheight&quot;: n,        (numeric) The current height (block) reported by the peer
+&quot;banscore&quot;: n,             (numeric) The ban score
+&quot;synced_headers&quot;: n,       (numeric) The last header we have in common with this peer
+&quot;synced_blocks&quot;: n,        (numeric) The last block we have in common with this peer
+&quot;inflight&quot;: [
+n,                        (numeric) The heights of blocks we're currently asking from this peer
+...
+],
+&quot;whitelisted&quot;: true|false, (boolean) Whether the peer is whitelisted
+&quot;bytessent_per_msg&quot;: {
+&quot;addr&quot;: n,              (numeric) The total bytes sent aggregated by message type
+...
+},
+&quot;bytesrecv_per_msg&quot;: {
+&quot;addr&quot;: n,              (numeric) The total bytes received aggregated by message type
+...
+}
+}
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getpeerinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getpeerinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

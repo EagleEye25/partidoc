@@ -1,0 +1,19 @@
+<h2>sendrawtransaction &quot;hexstring&quot; ( allowhighfees )</h2>
+<p>Submits raw transaction (serialized, hex-encoded) to local node and network.</p>
+<p>Also see createrawtransaction and signrawtransaction calls.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;hexstring&quot;    (string, required) The hex string of the raw transaction)</li>
+<li>allowhighfees    (boolean, optional, default=false) Allow high fees</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;hex&quot;             (string) The transaction hash in hex</p>
+<h2>Examples:</h2>
+<p>Create a transaction
+<code>particl-cli createrawtransaction &quot;[{\&quot;txid\&quot; : \&quot;mytxid\&quot;,\&quot;vout\&quot;:0}]&quot; &quot;{\&quot;myaddress\&quot;:0.01}&quot;</code>
+Sign the transaction, and get back the hex
+<code>particl-cli signrawtransaction &quot;myhex&quot;</code></p>
+<p>Send the transaction (signed hex)
+<code>particl-cli sendrawtransaction &quot;signedhex&quot;</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;sendrawtransaction&quot;, &quot;params&quot;: [&quot;signedhex&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

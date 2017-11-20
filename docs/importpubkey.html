@@ -1,0 +1,16 @@
+<h2>importpubkey &quot;pubkey&quot; ( &quot;label&quot; rescan )</h2>
+<p>Adds a public key (in hex) that can be watched as if it were in your wallet but cannot be used to spend.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;pubkey&quot;           (string, required) The hex-encoded public key</li>
+<li>&quot;label&quot;            (string, optional, default=&quot;&quot;) An optional label</li>
+<li>rescan               (boolean, optional, default=true) Rescan the wallet for transactions</li>
+</ol>
+<h2>Note: This call can take minutes to complete if rescan is true.</h2>
+<h2>Examples:</h2>
+<p>Import a public key with rescan
+<code>particl-cli importpubkey &quot;mypubkey&quot;</code></p>
+<p>Import using a label without rescan
+<code>particl-cli importpubkey &quot;mypubkey&quot; &quot;testing&quot; false</code></p>
+<p>As a JSON-RPC call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;importpubkey&quot;, &quot;params&quot;: [&quot;mypubkey&quot;, &quot;testing&quot;, false] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

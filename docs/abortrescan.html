@@ -1,0 +1,9 @@
+<h2>abortrescan</h2>
+<p>Stops current wallet rescan triggered e.g. by an importprivkey call.</p>
+<h2>Examples:</h2>
+<p>Import a private key
+<code>particl-cli importprivkey &quot;mykey&quot;</code></p>
+<p>Abort the running wallet rescan
+<code>particl-cli abortrescan</code></p>
+<p>As a JSON-RPC call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;abortrescan&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

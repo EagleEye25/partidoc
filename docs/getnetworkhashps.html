@@ -1,0 +1,14 @@
+<h2>getnetworkhashps ( nblocks height )</h2>
+<p>Returns the estimated network hashes per second based on the last n blocks.
+Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change.
+Pass in [height] to estimate the network speed at the time when a certain block was found.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>nblocks     (numeric, optional, default=120) The number of blocks, or -1 for blocks since last difficulty change.</li>
+<li>height      (numeric, optional, default=-1) To estimate at the time of the given height.</li>
+</ol>
+<h2>Result:</h2>
+<p>x             (numeric) Hashes per second estimated</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getnetworkhashps</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getnetworkhashps&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

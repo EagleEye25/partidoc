@@ -1,0 +1,11 @@
+<h2>pruneblockchain</h2>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;height&quot;       (numeric, required) The block height to prune up to. May be set to a discrete height, or a unix timestamp
+to prune blocks whose block time is at least 2 hours older than the provided timestamp.</li>
+</ol>
+<h2>Result:</h2>
+<p>n    (numeric) Height of the last block pruned.</p>
+<h2>Examples:</h2>
+<p><code>particl-cli pruneblockchain 1000</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;pruneblockchain&quot;, &quot;params&quot;: [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

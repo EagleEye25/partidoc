@@ -1,0 +1,31 @@
+<h2>getbalance ( &quot;account&quot; minconf include_watchonly )</h2>
+<p>If account is not specified, returns the server's total available balance.
+If account is specified (DEPRECATED), returns the balance in the account.
+Note that the account &quot;&quot; is not the same as leaving the parameter out.
+The server total may be different to the balance in the default &quot;&quot; account.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;account&quot;         (string, optional) DEPRECATED. The account string may be given as a
+specific account name to find the balance associated with wallet keys in
+a named account, or as the empty string (&quot;&quot;) to find the balance
+associated with wallet keys not in any named account, or as &quot;*&quot; to find
+the balance associated with all wallet keys regardless of account.
+When this option is specified, it calculates the balance in a different
+way than when it is not specified, and which can count spends twice when
+there are conflicting pending transactions (such as those created by
+the bumpfee command), temporarily resulting in low or even negative
+balances. In general, account balance calculation is not considered
+reliable and has resulted in confusing outcomes, so it is recommended to
+avoid passing this argument.</li>
+<li>minconf           (numeric, optional, default=1) Only include transactions confirmed at least this many times.</li>
+<li>include_watchonly (bool, optional, default=false) Also include balance in watch-only addresses (see 'importaddress')</li>
+</ol>
+<h2>Result:</h2>
+<p>amount              (numeric) The total amount in PART received for this account.</p>
+<h2>Examples:</h2>
+<p>The total amount in the wallet with 1 or more confirmations
+<code>particl-cli getbalance</code></p>
+<p>The total amount in the wallet at least 6 blocks confirmed
+<code>particl-cli getbalance &quot;*&quot; 6</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getbalance&quot;, &quot;params&quot;: [&quot;*&quot;, 6] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

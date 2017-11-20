@@ -1,0 +1,19 @@
+<h2>verifymessage &quot;address&quot; &quot;signature&quot; &quot;message&quot;</h2>
+<p>Verify a signed message</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;particladdress&quot;    (string, required) The particl address to use for the signature.</li>
+<li>&quot;signature&quot;       (string, required) The signature provided by the signer in base 64 encoding (see signmessage).</li>
+<li>&quot;message&quot;         (string, required) The message that was signed.</li>
+</ol>
+<h2>Result:</h2>
+<p>true|false   (boolean) If the signature is verified or not.</p>
+<h2>Examples:</h2>
+<p>Unlock the wallet for 30 seconds
+<code>particl-cli walletpassphrase &quot;mypassphrase&quot; 30</code></p>
+<p>Create the signature
+<code>particl-cli signmessage &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; &quot;my message&quot;</code></p>
+<p>Verify the signature
+<code>particl-cli verifymessage &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; &quot;signature&quot; &quot;my message&quot;</code></p>
+<p>As json rpc
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;verifymessage&quot;, &quot;params&quot;: [&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot;, &quot;signature&quot;, &quot;my message&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

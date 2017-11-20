@@ -1,0 +1,30 @@
+<h2>sendtoaddress &quot;address&quot; amount ( &quot;comment&quot; &quot;comment-to&quot; subtractfeefromamount &quot;narration&quot; replaceable conf_target &quot;estimate_mode&quot;)</h2>
+<p>Send an amount to a given address.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;     (string, required) The particl address to send to.</li>
+<li>amount          (numeric or string, required) The amount in PART to send. eg 0.1</li>
+<li>&quot;comment&quot;     (string, optional) A comment used to store what the transaction is for.
+This is not part of the transaction, just kept in your wallet.</li>
+<li>&quot;comment_to&quot;  (string, optional) A comment to store the name of the person or organization
+to which you're sending the transaction. This is not part of the
+transaction, just kept in your wallet.</li>
+<li>subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.
+The recipient will receive less PART than you enter in the amount field.</li>
+<li>&quot;narration&quot;   (string, optional) Up to 24 characters sent with the transaction.
+The narration is stored in the blockchain and is sent encrypted when destination is a stealth address and unencrypted otherwise.
+The recipient will receive less bitcoins than you enter in the amount field.</li>
+<li>replaceable            (boolean, optional) Allow this transaction to be replaced by a transaction with higher fees via BIP 125</li>
+<li>conf_target            (numeric, optional) Confirmation target (in blocks)</li>
+<li>&quot;estimate_mode&quot;      (string, optional, default=UNSET) The fee estimate mode, must be one of:
+&quot;UNSET&quot;
+&quot;ECONOMICAL&quot;
+&quot;CONSERVATIVE&quot;</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;txid&quot;           (string) The transaction id.</p>
+<h2>Examples:</h2>
+<p><code>particl-cli sendtoaddress &quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR&quot; 0.1</code>
+<code>particl-cli sendtoaddress &quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR&quot; 0.1 &quot;donation&quot; &quot;seans outpost&quot;</code>
+<code>particl-cli sendtoaddress &quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR&quot; 0.1 &quot;&quot; &quot;&quot; true</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;sendtoaddress&quot;, &quot;params&quot;: [&quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR&quot;, 0.1, &quot;donation&quot;, &quot;seans outpost&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

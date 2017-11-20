@@ -1,0 +1,10 @@
+<h2>setaccount &quot;address&quot; &quot;account&quot;</h2>
+<p>DEPRECATED. Sets the account associated with the given address.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;         (string, required) The particl address to be associated with an account.</li>
+<li>&quot;account&quot;         (string, required) The account to assign the address to.</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli setaccount &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; &quot;tabby&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;setaccount&quot;, &quot;params&quot;: [&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot;, &quot;tabby&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

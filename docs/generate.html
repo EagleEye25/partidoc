@@ -1,0 +1,12 @@
+<h2>generate nblocks ( maxtries )</h2>
+<p>Mine up to nblocks blocks immediately (before the RPC call returns) to an address in the wallet.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>nblocks      (numeric, required) How many blocks are generated immediately.</li>
+<li>maxtries     (numeric, optional) How many iterations to try (default = 1000000).</li>
+</ol>
+<h2>Result:</h2>
+<p>[ blockhashes ]     (array) hashes of blocks generated</p>
+<h2>Examples:</h2>
+<p>Generate 11 blocks
+<code>particl-cli generate 11</code></p>

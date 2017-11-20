@@ -1,0 +1,14 @@
+<h2>getaddressesbyaccount &quot;account&quot;</h2>
+<p>DEPRECATED. Returns the list of addresses for the given account.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;account&quot;        (string, required) The account name.</li>
+</ol>
+<h2>Result:</h2>
+<p>[                     (json array of string)
+&quot;address&quot;         (string) A particl address associated with the given account
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaddressesbyaccount &quot;tabby&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaddressesbyaccount&quot;, &quot;params&quot;: [&quot;tabby&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

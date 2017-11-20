@@ -1,0 +1,16 @@
+<h2>prioritisetransaction &lt;txid<code>&lt;dummy value&gt; &lt;fee delta&gt;</code></h2>
+<p>Accepts the transaction into mined blocks at a higher (or lower) priority</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txid&quot;       (string, required) The transaction id.</li>
+<li>dummy          (numeric, optional) API-Compatibility for previous API. Must be zero or null.
+DEPRECATED. For forward compatibility use named arguments and omit this parameter.</li>
+<li>fee_delta      (numeric, required) The fee value (in satoshis) to add (or subtract, if negative).
+The fee is not actually paid, only the algorithm for selecting transactions into a block
+considers the transaction as it would have paid a higher (or lower) fee.</li>
+</ol>
+<h2>Result:</h2>
+<p>true              (boolean) Returns true</p>
+<h2>Examples:</h2>
+<p><code>particl-cli prioritisetransaction &quot;txid&quot; 0.0 10000</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;prioritisetransaction&quot;, &quot;params&quot;: [&quot;txid&quot;, 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

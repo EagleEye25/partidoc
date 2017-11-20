@@ -1,0 +1,16 @@
+<h2>getchaintxstats ( nblocks blockhash )</h2>
+<p>Compute statistics about the total number and rate of transactions in the chain.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>nblocks      (numeric, optional) Size of the window in number of blocks (default: one month).</li>
+<li>&quot;blockhash&quot;  (string, optional) The hash of the block that ends the window.</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;time&quot;: xxxxx,        (numeric) The timestamp for the statistics in UNIX format.
+&quot;txcount&quot;: xxxxx,     (numeric) The total number of transactions in the chain up to that point.
+&quot;txrate&quot;: x.xx,       (numeric) The average rate of transactions per second in the window.
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getchaintxstats</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getchaintxstats&quot;, &quot;params&quot;: [2016] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

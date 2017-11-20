@@ -1,0 +1,27 @@
+<h2>getinfo</h2>
+<p>DEPRECATED. Returns an object containing various state info.</p>
+<h2>Result:</h2>
+<p>{
+&quot;deprecation-warning&quot;: &quot;...&quot; (string) warning that the getinfo command is deprecated and will be removed in 0.16
+&quot;version&quot;: xxxxx,           (numeric) the server version
+&quot;protocolversion&quot;: xxxxx,   (numeric) the protocol version
+&quot;walletversion&quot;: xxxxx,     (numeric) the wallet version
+&quot;total_balance&quot;: xxxxxxx,   (numeric) the total particl balance of the wallet, including immature, staked and unconfirmed coin of all types
+&quot;balance&quot;: xxxxxxx,         (numeric) the standard particl balance of the wallet, including immature coin
+&quot;moneysupply&quot;: xxxxxxx,     (numeric) the total amount of particl in the network
+&quot;blocks&quot;: xxxxxx,           (numeric) the current number of blocks processed in the server
+&quot;timeoffset&quot;: xxxxx,        (numeric) the time offset
+&quot;connections&quot;: xxxxx,       (numeric) the number of connections
+&quot;proxy&quot;: &quot;host:port&quot;,       (string, optional) the proxy used by the server
+&quot;difficulty&quot;: xxxxxx,       (numeric) the current difficulty
+&quot;testnet&quot;: true|false,      (boolean) if the server is using testnet or not
+&quot;keypoololdest&quot;: xxxxxx,    (numeric) the timestamp (seconds since Unix epoch) of the oldest account in the wallet
+&quot;keypoolsize&quot;: xxxx,        (numeric) the total number of keys in the active accounts
+&quot;unlocked_until&quot;: ttt,      (numeric) the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked
+&quot;paytxfee&quot;: x.xxxx,         (numeric) the transaction fee set in PART/kB
+&quot;relayfee&quot;: x.xxxx,         (numeric) minimum relay fee for transactions in PART/kB
+&quot;errors&quot;: &quot;...&quot;             (string) any error messages
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,24 @@
+<h2>getaddednodeinfo ( &quot;node&quot; )</h2>
+<p>Returns information about the given added node, or all added nodes
+(note that onetry addnodes are not listed here)</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;node&quot;   (string, optional) If provided, return information about this specific node, otherwise all nodes are returned.</li>
+</ol>
+<h2>Result:</h2>
+<p>[
+{
+&quot;addednode&quot; : &quot;192.168.0.201&quot;,   (string) The node IP address or name (as provided to addnode)
+&quot;connected&quot; : true|false,          (boolean) If connected
+&quot;addresses&quot; : [                    (list of objects) Only when connected = true
+{
+&quot;address&quot; : &quot;192.168.0.201:51738&quot;, (string) The particl server IP and port we're connected to
+&quot;connected&quot; : &quot;outbound&quot;           (string) connection, inbound or outbound
+}
+]
+}
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaddednodeinfo &quot;192.168.0.201&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaddednodeinfo&quot;, &quot;params&quot;: [&quot;192.168.0.201&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

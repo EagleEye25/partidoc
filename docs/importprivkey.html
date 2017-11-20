@@ -1,0 +1,20 @@
+<h2>importprivkey &quot;privkey&quot; ( &quot;label&quot; ) ( rescan )</h2>
+<p>Adds a private key (as returned by dumpprivkey) to your wallet.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;privkey&quot;          (string, required) The private key (see dumpprivkey)</li>
+<li>&quot;label&quot;            (string, optional, default=&quot;&quot;) An optional label</li>
+<li>rescan               (boolean, optional, default=true) Rescan the wallet for transactions</li>
+</ol>
+<h2>Note: This call can take minutes to complete if rescan is true.</h2>
+<h2>Examples:</h2>
+<p>Dump a private key
+<code>particl-cli dumpprivkey &quot;myaddress&quot;</code></p>
+<p>Import the private key with rescan
+<code>particl-cli importprivkey &quot;mykey&quot;</code></p>
+<p>Import using a label and without rescan
+<code>particl-cli importprivkey &quot;mykey&quot; &quot;testing&quot; false</code></p>
+<p>Import using default blank label and without rescan
+<code>particl-cli importprivkey &quot;mykey&quot; &quot;&quot; false</code></p>
+<p>As a JSON-RPC call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;importprivkey&quot;, &quot;params&quot;: [&quot;mykey&quot;, &quot;testing&quot;, false] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

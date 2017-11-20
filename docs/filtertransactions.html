@@ -1,0 +1,55 @@
+<h2>filtertransactions [options]</h2>
+<p>List transactions.</p>
+<ol>
+<li>
+<p>options (json, optional) : A configuration object for the query</p>
+<pre><code> All keys are optional. Default values are:
+ {
+         &quot;count&quot;:             10,
+         &quot;skip&quot;:              0,
+         &quot;include_watchonly&quot;: false,
+         &quot;search&quot;:            ''
+         &quot;category&quot;:          'all',
+         &quot;type&quot;:              'all',
+         &quot;sort&quot;:              'time'
+ }
+
+ Expected values are as follows:
+         count:             number of transactions to be displayed
+                            (integer `0)`
+         skip:              number of transactions to skip
+                            (integer &gt;= 0)
+         include_watchonly: whether to include watchOnly transactions
+                            (bool string)
+         search:            a query to search addresses and amounts
+                            character DOT '.' is not searched for:
+                            search &quot;123&quot; will find 1.23 and 12.3
+                            (query string)
+         category:          select only one category of transactions to return
+                            (string from list)
+                            all, send, orphan, immature, coinbase, receive,
+                            orphaned_stake, stake, internal_transfer
+         type:              select only one type of transactions to return
+                            (string from list)
+                            all, standard, anon, blind
+         sort:              sort transactions by criteria
+                            (string from list)
+                            time          most recent first
+                            address       alphabetical
+                            category      alphabetical
+                            amount        biggest first
+                            confirmations most confirmations first
+                            txid          alphabetical
+
+ Examples:
+     List only when category is 'stake'
+         `particl-cli filtertransactions &quot;{\&quot;category\&quot;:\&quot;stake\&quot;}&quot;`
+
+     Multiple arguments
+         `particl-cli filtertransactions &quot;{\&quot;sort\&quot;:\&quot;amount\&quot;, \&quot;category\&quot;:\&quot;receive\&quot;}&quot;`
+
+     As a JSON-RPC call
+         `curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;filtertransactions&quot;, &quot;params&quot;: [{\&quot;category\&quot;:\&quot;stake\&quot;}] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/`
+</code></pre>
+</li>
+</ol>

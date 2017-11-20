@@ -1,0 +1,12 @@
+<h2>verifychain ( checklevel nblocks )</h2>
+<p>Verifies blockchain database.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>checklevel   (numeric, optional, 0-4, default=3) How thorough the block verification is.</li>
+<li>nblocks      (numeric, optional, default=6, 0=all) The number of blocks to check.</li>
+</ol>
+<h2>Result:</h2>
+<p>true|false       (boolean) Verified or not</p>
+<h2>Examples:</h2>
+<p><code>particl-cli verifychain</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;verifychain&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

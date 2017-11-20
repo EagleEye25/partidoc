@@ -1,0 +1,33 @@
+<h2>importmulti &quot;requests&quot; ( &quot;options&quot; )</h2>
+<p>Import addresses/scripts (with private or public keys, redeem script (P2SH)), rescanning all addresses in one-shot-only (rescan can be disabled via options).</p>
+<h2>Arguments:</h2>
+<ol>
+<li>requests     (array, required) Data to be imported
+[     (array of json objects)
+{
+&quot;scriptPubKey&quot;: &quot;<script>&quot; | { &quot;address&quot;:&quot;<address>&quot; }, (string / json, required) Type of scriptPubKey (string for script, json for address)
+&quot;timestamp&quot;: timestamp | &quot;now&quot;                        , (integer / string, required) Creation time of the key in seconds since epoch (Jan 1 1970 GMT),
+or the string &quot;now&quot; to substitute the current synced blockchain time. The timestamp of the oldest
+key will determine how far back blockchain rescans need to begin for missing wallet transactions.
+&quot;now&quot; can be specified to bypass scanning, for keys which are known to never have been used, and
+0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest key
+creation time of all keys being imported by the importmulti call will be scanned.
+&quot;redeemscript&quot;: &quot;<script>&quot;                            , (string, optional) Allowed only if the scriptPubKey is a P2SH address or a P2SH scriptPubKey
+&quot;pubkeys&quot;: [&quot;<pubKey>&quot;, ... ]                         , (array, optional) Array of strings giving pubkeys that must occur in the output or redeemscript
+&quot;keys&quot;: [&quot;<key>&quot;, ... ]                               , (array, optional) Array of strings giving private keys whose corresponding public keys must occur in the output or redeemscript
+&quot;internal&quot;: &lt;true<code>, (boolean, optional, default: false) Stating whether matching outputs should be treated as not incoming payments</code>
+&quot;watchonly&quot;: &lt;true<code>, (boolean, optional, default: false) Stating whether matching outputs should be considered watched even when they're not spendable, only allowed if keys are empty</code>
+&quot;label&quot;: &lt;label<code>, (string, optional, default: '') Label to assign to the address (aka account name, for now), only allowed with internal=false</code>
+}
+,...
+]</li>
+<li>options                 (json, optional)
+{
+&quot;rescan&quot;: <false>,         (boolean, optional, default: true) Stating if should rescan the blockchain after all imports
+}</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli importmulti '[{ &quot;scriptPubKey&quot;: { &quot;address&quot;: &quot;&lt;my address&gt;&quot; }, &quot;timestamp&quot;:1455191478 }, { &quot;scriptPubKey&quot;: { &quot;address&quot;: &quot;&lt;my 2nd address&gt;&quot; }, &quot;label&quot;: &quot;example 2&quot;, &quot;timestamp&quot;: 1455191480 }]'</code>
+<code>particl-cli importmulti '[{ &quot;scriptPubKey&quot;: { &quot;address&quot;: &quot;&lt;my address&gt;&quot; }, &quot;timestamp&quot;:1455191478 }]' '{ &quot;rescan&quot;: false}'</code></p>
+<p>Response is an array with the same size as the input that has the execution result :
+[{ &quot;success&quot;: true } , { &quot;success&quot;: false, &quot;error&quot;: { &quot;code&quot;: -1, &quot;message&quot;: &quot;Internal Server Error&quot;} }, ... ]</p>

@@ -1,0 +1,11 @@
+<h2>settxfee amount</h2>
+<p>Set the transaction fee per kB. Overwrites the paytxfee parameter.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>amount         (numeric or string, required) The transaction fee in PART/kB</li>
+</ol>
+<p>Result
+true|false        (boolean) Returns true if successful</p>
+<h2>Examples:</h2>
+<p><code>particl-cli settxfee 0.00001</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;settxfee&quot;, &quot;params&quot;: [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

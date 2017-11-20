@@ -1,0 +1,11 @@
+<h2>getblockhash height</h2>
+<p>Returns hash of block in best-block-chain at height provided.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>height         (numeric, required) The height index</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;hash&quot;         (string) The block hash</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getblockhash 1000</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getblockhash&quot;, &quot;params&quot;: [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

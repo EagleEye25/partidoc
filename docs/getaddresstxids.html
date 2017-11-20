@@ -1,0 +1,20 @@
+<h2>getaddresstxids</h2>
+<p>Returns the txids for an address(es) (requires addressindex to be enabled).</p>
+<h2>Arguments:</h2>
+<p>{
+&quot;addresses&quot;
+[
+&quot;address&quot;  (string) The base58check encoded address
+,...
+]
+&quot;start&quot; (number) The start block height
+&quot;end&quot; (number) The end block height
+}</p>
+<h2>Result:</h2>
+<p>[
+&quot;transactionid&quot;  (string) The transaction id
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaddresstxids '{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}'</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaddresstxids&quot;, &quot;params&quot;: [{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

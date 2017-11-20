@@ -1,0 +1,14 @@
+<h2>disconnectnode &quot;[address]&quot; [nodeid]</h2>
+<p>Immediately disconnects from the specified peer node.</p>
+<p>Strictly one out of 'address' and 'nodeid' can be provided to identify the node.</p>
+<p>To disconnect by nodeid, either set 'address' to the empty string, or call using the named 'nodeid' argument only.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;     (string, optional) The IP address/port of the node</li>
+<li>&quot;nodeid&quot;      (number, optional) The node ID (see getpeerinfo for node IDs)</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli disconnectnode &quot;192.168.0.6:51738&quot;</code>
+<code>particl-cli disconnectnode &quot;&quot; 1</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;disconnectnode&quot;, &quot;params&quot;: [&quot;192.168.0.6:51738&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;disconnectnode&quot;, &quot;params&quot;: [&quot;&quot;, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

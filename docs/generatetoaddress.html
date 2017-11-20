@@ -1,0 +1,13 @@
+<h2>generatetoaddress nblocks address (maxtries)</h2>
+<p>Mine blocks immediately to a specified address (before the RPC call returns)</p>
+<h2>Arguments:</h2>
+<ol>
+<li>numblocks    (numeric, required) How many blocks are generated immediately.</li>
+<li>address      (string, required) The address to send the newly generated particl to.</li>
+<li>maxtries     (numeric, optional) How many iterations to try (default = 1000000).</li>
+</ol>
+<h2>Result:</h2>
+<p>[ blockhashes ]     (array) hashes of blocks generated</p>
+<h2>Examples:</h2>
+<p>Generate 11 blocks to myaddress
+<code>particl-cli generatetoaddress 11 &quot;myaddress&quot;</code></p>

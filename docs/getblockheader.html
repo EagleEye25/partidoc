@@ -1,0 +1,31 @@
+<h2>getblockheader &quot;hash&quot; ( verbose )</h2>
+<p>If verbose is false, returns a string that is serialized, hex-encoded data for blockheader 'hash'.
+If verbose is true, returns an Object with information about blockheader <hash>.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;hash&quot;          (string, required) The block hash</li>
+<li>verbose           (boolean, optional, default=true) true for a json object, false for the hex encoded data</li>
+</ol>
+<p>Result (for verbose = true):
+{
+&quot;hash&quot; : &quot;hash&quot;,     (string) the block hash (same as provided)
+&quot;confirmations&quot; : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+&quot;height&quot; : n,          (numeric) The block height or index
+&quot;version&quot; : n,         (numeric) The block version
+&quot;versionHex&quot; : &quot;00000000&quot;, (string) The block version formatted in hexadecimal
+&quot;merkleroot&quot; : &quot;xxxx&quot;, (string) The merkle root
+&quot;witnessmerkleroot&quot; : &quot;xxxx&quot;, (string) The witness merkle root
+&quot;time&quot; : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+&quot;mediantime&quot; : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
+&quot;nonce&quot; : n,           (numeric) The nonce
+&quot;bits&quot; : &quot;1d00ffff&quot;, (string) The bits
+&quot;difficulty&quot; : x.xxx,  (numeric) The difficulty
+&quot;chainwork&quot; : &quot;0000...1f3&quot;     (string) Expected number of hashes required to produce the current chain (in hex)
+&quot;previousblockhash&quot; : &quot;hash&quot;,  (string) The hash of the previous block
+&quot;nextblockhash&quot; : &quot;hash&quot;,      (string) The hash of the next block
+}</p>
+<p>Result (for verbose=false):
+&quot;data&quot;             (string) A string that is serialized, hex-encoded data for block 'hash'.</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getblockheader &quot;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getblockheader&quot;, &quot;params&quot;: [&quot;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

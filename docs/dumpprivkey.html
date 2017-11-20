@@ -1,0 +1,13 @@
+<h2>dumpprivkey &quot;address&quot;</h2>
+<p>Reveals the private key corresponding to 'address'.
+Then the importprivkey can be used with this output</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;         (string, required) The particl address for the private key</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;key&quot;                (string) The private key</p>
+<h2>Examples:</h2>
+<p><code>particl-cli dumpprivkey &quot;myaddress&quot;</code>
+<code>particl-cli importprivkey &quot;mykey&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;dumpprivkey&quot;, &quot;params&quot;: [&quot;myaddress&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

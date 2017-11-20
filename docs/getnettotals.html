@@ -1,0 +1,21 @@
+<h2>getnettotals</h2>
+<p>Returns information about network traffic, including bytes in, bytes out,
+and current time.</p>
+<h2>Result:</h2>
+<p>{
+&quot;totalbytesrecv&quot;: n,   (numeric) Total bytes received
+&quot;totalbytessent&quot;: n,   (numeric) Total bytes sent
+&quot;timemillis&quot;: t,       (numeric) Current UNIX time in milliseconds
+&quot;uploadtarget&quot;:
+{
+&quot;timeframe&quot;: n,                         (numeric) Length of the measuring timeframe in seconds
+&quot;target&quot;: n,                            (numeric) Target in bytes
+&quot;target_reached&quot;: true|false,           (boolean) True if target is reached
+&quot;serve_historical_blocks&quot;: true|false,  (boolean) True if serving historical blocks
+&quot;bytes_left_in_cycle&quot;: t,               (numeric) Bytes left in current time cycle
+&quot;time_left_in_cycle&quot;: t                 (numeric) Seconds left in current time cycle
+}
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getnettotals</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getnettotals&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

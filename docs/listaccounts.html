@@ -1,0 +1,21 @@
+<h2>listaccounts ( minconf include_watchonly)</h2>
+<p>DEPRECATED. Returns Object that has account names as keys, account balances as values.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>minconf             (numeric, optional, default=1) Only include transactions with at least this many confirmations</li>
+<li>include_watchonly   (bool, optional, default=false) Include balances in watch-only addresses (see 'importaddress')</li>
+</ol>
+<h2>Result:</h2>
+<p>{                      (json object where keys are account names, and values are numeric balances
+&quot;account&quot;: x.xxx,  (numeric) The property name is the account name, and the value is the total balance for the account.
+...
+}</p>
+<h2>Examples:</h2>
+<p>List account balances where there is at least 1 confirmation
+<code>particl-cli listaccounts</code></p>
+<p>List account balances including zero confirmation transactions
+<code>particl-cli listaccounts 0</code></p>
+<p>List account balances for 6 or more confirmations
+<code>particl-cli listaccounts 6</code></p>
+<p>As json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listaccounts&quot;, &quot;params&quot;: [6] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

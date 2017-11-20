@@ -1,0 +1,18 @@
+<h2>getaddressbalance</h2>
+<p>Returns the balance for an address(es) (requires addressindex to be enabled).</p>
+<h2>Arguments:</h2>
+<p>{
+&quot;addresses&quot;
+[
+&quot;address&quot;  (string) The base58check encoded address
+,...
+]
+}</p>
+<h2>Result:</h2>
+<p>{
+&quot;balance&quot;  (string) The current balance in satoshis
+&quot;received&quot;  (string) The total number of satoshis received (including change)
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaddressbalance '{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}'</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaddressbalance&quot;, &quot;params&quot;: [{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,44 @@
+<h2>listunspentblind ( minconf maxconf  [&quot;addresses&quot;,...] [include_unsafe] )</h2>
+<p>Returns array of unspent transaction blind outputs
+with between minconf and maxconf (inclusive) confirmations.
+Optionally filter to only include txouts paid to specified addresses.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>minconf          (numeric, optional, default=1) The minimum confirmations to filter</li>
+<li>maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter</li>
+<li>&quot;addresses&quot;    (string) A json array of particl addresses to filter
+[
+&quot;address&quot;   (string) particl address
+,...
+]</li>
+<li>include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend
+because they come from unconfirmed untrusted transactions or unconfirmed
+replacement transactions (cases where we are less sure that a conflicting
+transaction won't be mined).</li>
+<li>query_options    (json, optional) JSON with query options
+{
+&quot;minimumAmount&quot;    (numeric or string, default=0) Minimum value of each UTXO in PART
+&quot;maximumAmount&quot;    (numeric or string, default=unlimited) Maximum value of each UTXO in PART
+&quot;maximumCount&quot;     (numeric or string, default=unlimited) Maximum number of UTXOs
+&quot;minimumSumAmount&quot; (numeric or string, default=unlimited) Minimum sum value of all UTXOs in PART
+&quot;cc_format&quot;        (bool, default=false) Format for coincontrol
+}</li>
+</ol>
+<p>Result
+[                   (array of json object)
+{
+&quot;txid&quot; : &quot;txid&quot;,          (string) the transaction id
+&quot;vout&quot; : n,               (numeric) the vout value
+&quot;address&quot; : &quot;address&quot;,    (string) the particl address
+&quot;account&quot; : &quot;account&quot;,    (string) DEPRECATED. The associated account, or &quot;&quot; for the default account
+&quot;scriptPubKey&quot; : &quot;key&quot;,   (string) the script key
+&quot;amount&quot; : x.xxx,         (numeric) the transaction output amount in PART
+&quot;confirmations&quot; : n,      (numeric) The number of confirmations
+&quot;redeemScript&quot; : n        (string) The redeemScript if scriptPubKey is P2SH
+}
+,...
+]</p>
+<p>Examples
+<code>particl-cli listunspentblind</code>
+<code>particl-cli listunspentblind 6 9999999 &quot;[\&quot;PfqK97PXYfqRFtdYcZw82x3dzPrZbEAcYa\&quot;,\&quot;Pka9M2Bva8WetQhQ4ngC255HAbMJf5P5Dc\&quot;]&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listunspentblind&quot;, &quot;params&quot;: [6, 9999999 &quot;[\&quot;PfqK97PXYfqRFtdYcZw82x3dzPrZbEAcYa\&quot;,\&quot;Pka9M2Bva8WetQhQ4ngC255HAbMJf5P5Dc\&quot;]&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

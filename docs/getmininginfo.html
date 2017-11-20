@@ -1,0 +1,17 @@
+<h2>getmininginfo</h2>
+<p>Returns a json object containing mining-related information.</p>
+<h2>Result:</h2>
+<p>{
+&quot;blocks&quot;: nnn,             (numeric) The current block
+&quot;currentblocksize&quot;: nnn,   (numeric) The last block size
+&quot;currentblockweight&quot;: nnn, (numeric) The last block weight
+&quot;currentblocktx&quot;: nnn,     (numeric) The last block transaction
+&quot;difficulty&quot;: xxx.xxxxx    (numeric) The current difficulty
+&quot;errors&quot;: &quot;...&quot;            (string) Current errors
+&quot;networkhashps&quot;: nnn,      (numeric) The network hashes per second
+&quot;pooledtx&quot;: n              (numeric) The size of the mempool
+&quot;chain&quot;: &quot;xxxx&quot;,           (string) current network name as defined in BIP70 (main, test, regtest)
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getmininginfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getmininginfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,26 @@
+<h2>getmemoryinfo (&quot;mode&quot;)</h2>
+<p>Returns an object containing information about memory usage.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;mode&quot; determines what kind of information is returned. This argument is optional, the default mode is &quot;stats&quot;.</li>
+</ol>
+<ul>
+<li>&quot;stats&quot; returns general statistics about memory usage in the daemon.</li>
+<li>&quot;mallocinfo&quot; returns an XML string describing low-level heap state (only available if compiled with glibc 2.10+).</li>
+</ul>
+<p>Result (mode &quot;stats&quot;):
+{
+&quot;locked&quot;: {               (json object) Information about locked memory manager
+&quot;used&quot;: xxxxx,          (numeric) Number of bytes used
+&quot;free&quot;: xxxxx,          (numeric) Number of bytes available in current arenas
+&quot;total&quot;: xxxxxxx,       (numeric) Total number of bytes managed
+&quot;locked&quot;: xxxxxx,       (numeric) Amount of bytes that succeeded locking. If this number is smaller than total, locking pages failed at some point and key data could be swapped to disk.
+&quot;chunks_used&quot;: xxxxx,   (numeric) Number allocated chunks
+&quot;chunks_free&quot;: xxxxx,   (numeric) Number unused chunks
+}
+}</p>
+<p>Result (mode &quot;mallocinfo&quot;):
+&quot;<malloc version="1">...&quot;</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getmemoryinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getmemoryinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

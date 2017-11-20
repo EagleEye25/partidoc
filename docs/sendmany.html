@@ -1,0 +1,39 @@
+<h2>sendmany &quot;fromaccount&quot; {&quot;address&quot;:amount,...} ( minconf &quot;comment&quot; [&quot;address&quot;,...] replaceable conf_target &quot;estimate_mode&quot;)</h2>
+<p>Send multiple times. Amounts are double-precision floating point numbers.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;fromaccount&quot;         (string, required) DEPRECATED. The account to send the funds from. Should be &quot;&quot; for the default account</li>
+<li>&quot;amounts&quot;             (string, required) A json object with addresses and amounts
+{
+&quot;address&quot;:amount   (numeric or string) The particl address is the key, the numeric amount (can be string) in PART is the value
+,...
+}</li>
+<li>minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.</li>
+<li>&quot;comment&quot;             (string, optional) A comment</li>
+<li>&quot;subtractfeefrom&quot;     (array, optional) A json array with addresses.
+The fee will be equally deducted from the amount of each selected address.
+Those recipients will receive less PART than you enter in their corresponding amount field.
+If no addresses are specified here, the sender pays the fee.
+[
+&quot;address&quot;          (string) Subtract fee from this address
+,...
+]</li>
+<li>replaceable            (boolean, optional) Allow this transaction to be replaced by a transaction with higher fees via BIP 125</li>
+<li>conf_target            (numeric, optional) Confirmation target (in blocks)</li>
+<li>&quot;estimate_mode&quot;      (string, optional, default=UNSET) The fee estimate mode, must be one of:
+&quot;UNSET&quot;
+&quot;ECONOMICAL&quot;
+&quot;CONSERVATIVE&quot;</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;txid&quot;                   (string) The transaction id for the send. Only 1 transaction is created regardless of
+the number of addresses.</p>
+<h2>Examples:</h2>
+<p>Send two amounts to two different addresses:
+<code>particl-cli sendmany &quot;&quot; &quot;{\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;:0.01,\&quot;PvhJj4j9s6SsuRsAkPZUfHPCjZRNKLeuqP\&quot;:0.02}&quot;</code></p>
+<p>Send two amounts to two different addresses, setting the confirmation and comment:
+<code>particl-cli sendmany &quot;&quot; &quot;{\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;:0.01,\&quot;PvhJj4j9s6SsuRsAkPZUfHPCjZRNKLeuqP\&quot;:0.02}&quot; 6 &quot;testing&quot;</code></p>
+<p>Send two amounts to two different addresses, subtract fee from amount:
+<code>particl-cli sendmany &quot;&quot; &quot;{\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;:0.01,\&quot;PvhJj4j9s6SsuRsAkPZUfHPCjZRNKLeuqP\&quot;:0.02}&quot; 1 &quot;&quot; &quot;[\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;,\&quot;PvhJj4j9s6SsuRsAkPZUfHPCjZRNKLeuqP\&quot;]&quot;</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;sendmany&quot;, &quot;params&quot;: [&quot;&quot;, &quot;{\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;:0.01,\&quot;PvhJj4j9s6SsuRsAkPZUfHPCjZRNKLeuqP\&quot;:0.02}&quot;, 6, &quot;testing&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

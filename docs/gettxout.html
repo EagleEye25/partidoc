@@ -1,0 +1,32 @@
+<h2>gettxout &quot;txid&quot; n ( include_mempool )</h2>
+<p>Returns details about an unspent transaction output.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txid&quot;       (string, required) The transaction id</li>
+<li>n              (numeric, required) vout number</li>
+<li>include_mempool  (boolean, optional) Whether to include the mempool</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;bestblock&quot; : &quot;hash&quot;,    (string) the block hash
+&quot;confirmations&quot; : n,       (numeric) The number of confirmations
+&quot;value&quot; : x.xxx,           (numeric) The transaction value in PART
+&quot;scriptPubKey&quot; : {         (json object)
+&quot;asm&quot; : &quot;code&quot;,       (string)
+&quot;hex&quot; : &quot;hex&quot;,        (string)
+&quot;reqSigs&quot; : n,          (numeric) Number of required signatures
+&quot;type&quot; : &quot;pubkeyhash&quot;, (string) The type, eg pubkeyhash
+&quot;addresses&quot; : [          (array of string) array of particl addresses
+&quot;address&quot;           (string) particl address
+,...
+]
+},
+&quot;coinbase&quot; : true|false   (boolean) Coinbase or not
+}</p>
+<h2>Examples:</h2>
+<p>Get unspent transactions
+<code>particl-cli listunspent</code></p>
+<p>View the details
+<code>particl-cli gettxout &quot;txid&quot; 1</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;gettxout&quot;, &quot;params&quot;: [&quot;txid&quot;, 1] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

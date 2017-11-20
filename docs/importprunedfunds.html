@@ -1,0 +1,7 @@
+<h2>importprunedfunds</h2>
+<p>Imports funds without rescan. Corresponding address or script must previously be included in wallet. Aimed towards pruned wallets. The end-user is responsible to import additional transactions that subsequently spend the imported outputs or rescan after the point in the blockchain the transaction is included.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;rawtransaction&quot; (string, required) A raw transaction in hex funding an already-existing address in wallet</li>
+<li>&quot;txoutproof&quot;     (string, required) The hex output from gettxoutproof that contains the transaction</li>
+</ol>

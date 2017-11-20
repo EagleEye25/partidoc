@@ -1,0 +1,13 @@
+<h2>dumpwallet &quot;filename&quot;</h2>
+<p>Dumps all wallet keys in a human-readable format.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;filename&quot;    (string, required) The filename with path (either absolute or relative to bitcoind)</li>
+</ol>
+<h2>Result:</h2>
+<p>{                           (json object)
+&quot;filename&quot; : {        (string) The filename with full absolute path
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli dumpwallet &quot;test&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;dumpwallet&quot;, &quot;params&quot;: [&quot;test&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

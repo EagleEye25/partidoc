@@ -1,0 +1,16 @@
+<h2>signmessagewithprivkey &quot;privkey&quot; &quot;message&quot;</h2>
+<p>Sign a message with the private key of an address</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;privkey&quot;         (string, required) The private key to sign the message with.</li>
+<li>&quot;message&quot;         (string, required) The message to create a signature of.</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;signature&quot;          (string) The signature of the message encoded in base 64</p>
+<h2>Examples:</h2>
+<p>Create the signature
+<code>particl-cli signmessagewithprivkey &quot;privkey&quot; &quot;my message&quot;</code></p>
+<p>Verify the signature
+<code>particl-cli verifymessage &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; &quot;signature&quot; &quot;my message&quot;</code></p>
+<p>As json rpc
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;signmessagewithprivkey&quot;, &quot;params&quot;: [&quot;privkey&quot;, &quot;my message&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

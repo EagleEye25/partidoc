@@ -1,0 +1,17 @@
+<h2>gettxoutsetinfo</h2>
+<p>Returns statistics about the unspent transaction output set.
+Note this call may take some time.</p>
+<h2>Result:</h2>
+<p>{
+&quot;height&quot;:n,     (numeric) The current block height (index)
+&quot;bestblock&quot;: &quot;hex&quot;,   (string) the best block hash hex
+&quot;transactions&quot;: n,      (numeric) The number of transactions
+&quot;txouts&quot;: n,            (numeric) The number of output transactions
+&quot;bogosize&quot;: n,          (numeric) A meaningless metric for UTXO set size
+&quot;hash_serialized_2&quot;: &quot;hash&quot;, (string) The serialized hash
+&quot;disk_size&quot;: n,         (numeric) The estimated size of the chainstate on disk
+&quot;total_amount&quot;: x.xxx          (numeric) The total amount
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli gettxoutsetinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;gettxoutsetinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

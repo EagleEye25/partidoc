@@ -1,0 +1,30 @@
+<h2>estimatesmartfee conf_target (&quot;estimate_mode&quot;)</h2>
+<p>Estimates the approximate fee per kilobyte needed for a transaction to begin
+confirmation within conf_target blocks if possible and return the number of blocks
+for which the estimate is valid. Uses virtual transaction size as defined
+in BIP 141 (witness data is discounted).</p>
+<h2>Arguments:</h2>
+<ol>
+<li>conf_target     (numeric) Confirmation target in blocks (1 - 1008)</li>
+<li>&quot;estimate_mode&quot; (string, optional, default=CONSERVATIVE) The fee estimate mode.
+Whether to return a more conservative estimate which also satisfies
+a longer history. A conservative estimate potentially returns a
+higher feerate and is more likely to be sufficient for the desired
+target, but is not as responsive to short term drops in the
+prevailing fee market.  Must be one of:
+&quot;UNSET&quot; (defaults to CONSERVATIVE)
+&quot;ECONOMICAL&quot;
+&quot;CONSERVATIVE&quot;</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;feerate&quot; : x.x,     (numeric, optional) estimate fee-per-kilobyte (in PART)
+&quot;errors&quot;: [ str... ] (json array of strings, optional) Errors encountered during processing
+&quot;blocks&quot; : n         (numeric) block number where estimate was found
+}</p>
+<p>The request target will be clamped between 2 and the highest target
+fee estimation is able to return based on how long it has been running.
+An error is returned if not enough transactions and blocks
+have been observed to make an estimate for any number of blocks.</p>
+<h2>Example:</h2>
+<p><code>particl-cli estimatesmartfee 6</code></p>

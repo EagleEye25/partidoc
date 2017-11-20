@@ -1,0 +1,11 @@
+<h2>listwallets</h2>
+<p>Returns a list of currently loaded wallets.
+For full information on the wallet, use &quot;getwalletinfo&quot;</p>
+<h2>Result:</h2>
+<p>[                         (json array of strings)
+&quot;walletname&quot;            (string) the wallet name
+...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli listwallets</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listwallets&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

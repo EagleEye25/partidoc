@@ -1,0 +1,25 @@
+<h2>getwalletinfo</h2>
+<p>Returns an object containing various wallet state info.</p>
+<h2>Result:</h2>
+<p>{
+&quot;walletname&quot;: xxxxx,             (string) the wallet name
+&quot;walletversion&quot;: xxxxx,        (numeric) the wallet version
+&quot;total_balance&quot;: xxxxxxx,      (numeric) the total balance of the wallet in PART
+&quot;balance&quot;: xxxxxxx,            (numeric) the total confirmed balance of the wallet in PART
+&quot;blind_balance&quot;: xxxxxxx,      (numeric) the total confirmed blinded balance of the wallet in PART
+&quot;anon_balance&quot;: xxxxxxx,       (numeric) the total confirmed anon balance of the wallet in PART
+&quot;staked_balance&quot;: xxxxxxx,     (numeric) the total staked balance of the wallet in PART (non-spendable until maturity)
+&quot;unconfirmed_balance&quot;: xxx,    (numeric) the total unconfirmed balance of the wallet in PART
+&quot;immature_balance&quot;: xxxxxx,    (numeric) the total immature balance of the wallet in PART
+&quot;reserve&quot;: xxxxxx,             (numeric) the reserve balance of the wallet in PART
+&quot;txcount&quot;: xxxxxxx,            (numeric) the total number of transactions in the wallet
+&quot;keypoololdest&quot;: xxxxxx,       (numeric) the timestamp (seconds since Unix epoch) of the oldest pre-generated key in the key pool
+&quot;keypoolsize&quot;: xxxx,           (numeric) how many new keys are pre-generated
+&quot;encryptionstatus&quot;:            (string) unencrypted/locked/unlocked
+&quot;unlocked_until&quot;: ttt,         (numeric) the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked
+&quot;paytxfee&quot;: x.xxxx,            (numeric) the transaction fee configuration, set in PART/kB
+&quot;hdmasterkeyid&quot;: &quot;<hash160>&quot; (string) the Hash160 of the HD master pubkey
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getwalletinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getwalletinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

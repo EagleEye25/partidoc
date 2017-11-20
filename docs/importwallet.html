@@ -1,0 +1,13 @@
+<h2>importwallet &quot;filename&quot;</h2>
+<p>Imports keys from a wallet dump file (see dumpwallet).</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;filename&quot;    (string, required) The wallet file</li>
+</ol>
+<h2>Examples:</h2>
+<p>Dump the wallet
+<code>particl-cli dumpwallet &quot;test&quot;</code></p>
+<p>Import the wallet
+<code>particl-cli importwallet &quot;test&quot;</code></p>
+<p>Import using the json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;importwallet&quot;, &quot;params&quot;: [&quot;test&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,32 @@
+{
+  "name": "partidoc",
+  "version": "0.0.1",
+  "description": "Partidoc creates documentation for Particl Core Daemon RPC Calls",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/particl/partidoc.git"
+  },
+  "keywords": [
+    "documentation",
+    "particl",
+    "P2P",
+    "RPC"
+  ],
+  "author": "Jason Eybers <jasone@particl.io>",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/particl/partidoc/issues"
+  },
+  "homepage": "https://github.com/particl/partidoc#readme",
+  "dependencies": {
+    "http": "0.0.0",
+    "mkcat": "^1.1.5",
+    "mkout": "^1.0.39",
+    "rxjs": "^5.5.2"
+  }
+}

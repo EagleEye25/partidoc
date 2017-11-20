@@ -1,0 +1,28 @@
+<h2>getchaintips</h2>
+<p>Return information about all known tips in the block tree, including the main chain as well as orphaned branches.</p>
+<h2>Result:</h2>
+<p>[
+{
+&quot;height&quot;: xxxx,         (numeric) height of the chain tip
+&quot;hash&quot;: &quot;xxxx&quot;,         (string) block hash of the tip
+&quot;branchlen&quot;: 0          (numeric) zero for main chain
+&quot;status&quot;: &quot;active&quot;      (string) &quot;active&quot; for the main chain
+},
+{
+&quot;height&quot;: xxxx,
+&quot;hash&quot;: &quot;xxxx&quot;,
+&quot;branchlen&quot;: 1          (numeric) length of branch connecting the tip to the main chain
+&quot;status&quot;: &quot;xxxx&quot;        (string) status of the chain (active, valid-fork, valid-headers, headers-only, invalid)
+}
+]
+Possible values for status:</p>
+<ol>
+<li>&quot;invalid&quot;               This branch contains at least one invalid block</li>
+<li>&quot;headers-only&quot;          Not all blocks for this branch are available, but the headers are valid</li>
+<li>&quot;valid-headers&quot;         All blocks are available for this branch, but they were never fully validated</li>
+<li>&quot;valid-fork&quot;            This branch is not part of the active chain, but is fully validated</li>
+<li>&quot;active&quot;                This is the tip of the active main chain, which is certainly valid</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli getchaintips</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getchaintips&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

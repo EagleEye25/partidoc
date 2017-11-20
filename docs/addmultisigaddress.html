@@ -1,0 +1,21 @@
+<h2>addmultisigaddress nrequired [&quot;key&quot;,...] ( &quot;account&quot; )</h2>
+<p>Add a nrequired-to-sign multisignature address to the wallet.
+Each key is a Particl address or hex-encoded public key.
+If 'account' is specified (DEPRECATED), assign address to that account.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.</li>
+<li>&quot;keys&quot;         (string, required) A json array of particl addresses or hex-encoded public keys
+[
+&quot;address&quot;  (string) particl address or hex-encoded public key
+...,
+]</li>
+<li>&quot;account&quot;      (string, optional) DEPRECATED. An account to assign the addresses to.</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;address&quot;         (string) A particl address associated with the keys.</p>
+<h2>Examples:</h2>
+<p>Add a multisig address from 2 addresses
+<code>particl-cli addmultisigaddress 2 &quot;[\&quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR\&quot;,\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;]&quot;</code></p>
+<p>As json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;addmultisigaddress&quot;, &quot;params&quot;: [2, &quot;[\&quot;PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR\&quot;,\&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc\&quot;]&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

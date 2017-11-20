@@ -1,0 +1,13 @@
+<h2>getaccountaddress &quot;account&quot;</h2>
+<p>DEPRECATED. Returns the current Particl address for receiving payments to this account.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;account&quot;       (string, required) The account name for the address. It can also be set to the empty string &quot;&quot; to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;address&quot;          (string) The particl account address</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaccountaddress</code>
+<code>particl-cli getaccountaddress &quot;&quot;</code>
+<code>particl-cli getaccountaddress &quot;myaccount&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaccountaddress&quot;, &quot;params&quot;: [&quot;myaccount&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,19 @@
+<h2>listaddressgroupings</h2>
+<p>Lists groups of addresses which have had their common ownership
+made public by common use as inputs, or as the resulting change
+in past transactions</p>
+<h2>Result:</h2>
+<p>[
+[
+[
+&quot;address&quot;,            (string) The particl address
+amount,                 (numeric) The amount in PART
+&quot;account&quot;             (string, optional) DEPRECATED. The account
+]
+,...
+]
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli listaddressgroupings</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listaddressgroupings&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

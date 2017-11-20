@@ -1,0 +1,16 @@
+<h2>combinerawtransaction [&quot;hexstring&quot;,...]</h2>
+<p>Combine multiple partially signed transactions into one transaction.
+The combined transaction may be another partially signed transaction or a
+fully signed transaction.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txs&quot;         (string) A json array of hex strings of partially signed transactions
+[
+&quot;hexstring&quot;     (string) A transaction hash
+,...
+]</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;hex&quot;            (string) The hex-encoded raw transaction with signature(s)</p>
+<h2>Examples:</h2>
+<p><code>particl-cli combinerawtransaction [&quot;myhex1&quot;, &quot;myhex2&quot;, &quot;myhex3&quot;]</code></p>

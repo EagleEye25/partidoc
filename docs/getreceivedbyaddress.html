@@ -1,0 +1,18 @@
+<h2>getreceivedbyaddress &quot;address&quot; ( minconf )</h2>
+<p>Returns the total amount received by the given particl address in transactions with at least minconf confirmations.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;         (string, required) The particl address for transactions.</li>
+<li>minconf             (numeric, optional, default=1) Only include transactions confirmed at least this many times.</li>
+</ol>
+<h2>Result:</h2>
+<p>amount   (numeric) The total amount in PART received at this address.</p>
+<h2>Examples:</h2>
+<p>The amount from transactions with at least 1 confirmation
+<code>particl-cli getreceivedbyaddress &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot;</code></p>
+<p>The amount including unconfirmed transactions, zero confirmations
+<code>particl-cli getreceivedbyaddress &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; 0</code></p>
+<p>The amount with at least 6 confirmation
+<code>particl-cli getreceivedbyaddress &quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot; 6</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getreceivedbyaddress&quot;, &quot;params&quot;: [&quot;PswXnorAgjpAtaySWkPSmWQe3Fc8LmviVc&quot;, 6] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

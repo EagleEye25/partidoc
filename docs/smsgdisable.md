@@ -1,0 +1,2 @@
+## smsgdisable 
+Disable secure messaging.

@@ -1,0 +1,47 @@
+<h2>getblock &quot;blockhash&quot; ( verbosity )</h2>
+<p>If verbosity is 0, returns a string that is serialized, hex-encoded data for block 'hash'.
+If verbosity is 1, returns an Object with information about block <hash>.
+If verbosity is 2, returns an Object with information about block &lt;hash<code>and information about each transaction.</code></p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;blockhash&quot;          (string, required) The block hash</li>
+<li>verbosity              (numeric, optional, default=1) 0 for hex encoded data, 1 for a json object, and 2 for json object with transaction data</li>
+</ol>
+<p>Result (for verbosity = 0):
+&quot;data&quot;             (string) A string that is serialized, hex-encoded data for block 'hash'.</p>
+<p>Result (for verbosity = 1):
+{
+&quot;hash&quot; : &quot;hash&quot;,     (string) the block hash (same as provided)
+&quot;confirmations&quot; : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+&quot;size&quot; : n,            (numeric) The block size
+&quot;strippedsize&quot; : n,    (numeric) The block size excluding witness data
+&quot;weight&quot; : n           (numeric) The block weight as defined in BIP 141
+&quot;height&quot; : n,          (numeric) The block height or index
+&quot;version&quot; : n,         (numeric) The block version
+&quot;versionHex&quot; : &quot;00000000&quot;, (string) The block version formatted in hexadecimal
+&quot;merkleroot&quot; : &quot;xxxx&quot;, (string) The merkle root
+&quot;witnessmerkleroot&quot; : &quot;xxxx&quot;, (string) The witness merkle root
+&quot;tx&quot; : [               (array of string) The transaction ids
+&quot;transactionid&quot;     (string) The transaction id
+,...
+],
+&quot;time&quot; : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+&quot;mediantime&quot; : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
+&quot;nonce&quot; : n,           (numeric) The nonce
+&quot;bits&quot; : &quot;1d00ffff&quot;, (string) The bits
+&quot;difficulty&quot; : x.xxx,  (numeric) The difficulty
+&quot;chainwork&quot; : &quot;xxxx&quot;,  (string) Expected number of hashes required to produce the chain up to this block (in hex)
+&quot;previousblockhash&quot; : &quot;hash&quot;,  (string) The hash of the previous block
+&quot;nextblockhash&quot; : &quot;hash&quot;       (string) The hash of the next block
+}</p>
+<p>Result (for verbosity = 2):
+{
+...,                     Same output as verbosity = 1.
+&quot;tx&quot; : [               (array of Objects) The transactions in the format of the getrawtransaction RPC. Different from verbosity = 1 &quot;tx&quot; result.
+,...
+],
+,...                     Same output as verbosity = 1.
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getblock &quot;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getblock&quot;, &quot;params&quot;: [&quot;00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

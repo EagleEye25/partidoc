@@ -1,0 +1,7 @@
+<h2>ping</h2>
+<p>Requests that a ping be sent to all other nodes, to measure ping time.
+Results provided in getpeerinfo, pingtime and pingwait fields are decimal seconds.
+Ping command is handled in queue with all other commands, so it measures processing backlog, not just network ping.</p>
+<h2>Examples:</h2>
+<p><code>particl-cli ping</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;ping&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

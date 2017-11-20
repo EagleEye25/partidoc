@@ -1,0 +1,43 @@
+<h2>getblockchaininfo</h2>
+<p>Returns an object containing various state info regarding blockchain processing.</p>
+<h2>Result:</h2>
+<p>{
+&quot;chain&quot;: &quot;xxxx&quot;,        (string) current network name as defined in BIP70 (main, test, regtest)
+&quot;blocks&quot;: xxxxxx,         (numeric) the current number of blocks processed in the server
+&quot;headers&quot;: xxxxxx,        (numeric) the current number of headers we have validated
+&quot;bestblockhash&quot;: &quot;...&quot;, (string) the hash of the currently best block
+&quot;difficulty&quot;: xxxxxx,     (numeric) the current difficulty
+&quot;mediantime&quot;: xxxxxx,     (numeric) median time for the current best block
+&quot;verificationprogress&quot;: xxxx, (numeric) estimate of verification progress [0..1]
+&quot;chainwork&quot;: &quot;xxxx&quot;     (string) total amount of work in active chain, in hexadecimal
+&quot;pruned&quot;: xx,             (boolean) if the blocks are subject to pruning
+&quot;pruneheight&quot;: xxxxxx,    (numeric) lowest-height complete block stored
+&quot;softforks&quot;: [            (array) status of softforks in progress
+{
+&quot;id&quot;: &quot;xxxx&quot;,        (string) name of softfork
+&quot;version&quot;: xx,         (numeric) block version
+&quot;reject&quot;: {            (object) progress toward rejecting pre-softfork blocks
+&quot;status&quot;: xx,       (boolean) true if threshold reached
+},
+}, ...
+],
+&quot;bip9_softforks&quot;: {          (object) status of BIP9 softforks in progress
+&quot;xxxx&quot; : {                (string) name of the softfork
+&quot;status&quot;: &quot;xxxx&quot;,    (string) one of &quot;defined&quot;, &quot;started&quot;, &quot;locked_in&quot;, &quot;active&quot;, &quot;failed&quot;
+&quot;bit&quot;: xx,             (numeric) the bit (0-28) in the block version field used to signal this softfork (only for &quot;started&quot; status)
+&quot;startTime&quot;: xx,       (numeric) the minimum median time past of a block at which the bit gains its meaning
+&quot;timeout&quot;: xx,         (numeric) the median time past of a block at which the deployment is considered failed if not yet locked in
+&quot;since&quot;: xx,           (numeric) height of the first block to which the status applies
+&quot;statistics&quot;: {        (object) numeric statistics about BIP9 signalling for a softfork (only for &quot;started&quot; status)
+&quot;period&quot;: xx,       (numeric) the length in blocks of the BIP9 signalling period
+&quot;threshold&quot;: xx,    (numeric) the number of blocks with the version bit set required to activate the feature
+&quot;elapsed&quot;: xx,      (numeric) the number of blocks elapsed since the beginning of the current period
+&quot;count&quot;: xx,        (numeric) the number of blocks with the version bit set in the current period
+&quot;possible&quot;: xx      (boolean) returns false if there are not enough blocks left in this period to pass activation threshold
+}
+}
+}
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getblockchaininfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getblockchaininfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

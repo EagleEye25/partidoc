@@ -1,0 +1,21 @@
+<h2>decodescript &quot;hexstring&quot;</h2>
+<p>Decode a hex-encoded script.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;hexstring&quot;     (string) the hex encoded script</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;asm&quot;:&quot;asm&quot;,   (string) Script public key
+&quot;hex&quot;:&quot;hex&quot;,   (string) hex encoded public key
+&quot;type&quot;:&quot;type&quot;, (string) The output type
+&quot;reqSigs&quot;: n,    (numeric) The required signatures
+&quot;addresses&quot;: [   (json array of string)
+&quot;address&quot;     (string) particl address
+,...
+],
+&quot;p2sh&quot;,&quot;address&quot; (string) address of P2SH script wrapping this redeem script (not returned if the script is already a P2SH).
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli decodescript &quot;hexstring&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;decodescript&quot;, &quot;params&quot;: [&quot;hexstring&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

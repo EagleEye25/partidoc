@@ -1,0 +1,45 @@
+<h2>bumpfee &quot;txid&quot; ( options )</h2>
+<p>Bumps the fee of an opt-in-RBF transaction T, replacing it with a new transaction B.
+An opt-in RBF transaction with the given txid must be in the wallet.
+The command will pay the additional fee by decreasing (or perhaps removing) its change output.
+If the change output is not big enough to cover the increased fee, the command will currently fail
+instead of adding new inputs to compensate. (A future implementation could improve this.)
+The command will fail if the wallet or mempool contains a transaction that spends one of T's outputs.
+By default, the new fee will be calculated automatically using estimatefee.
+The user can specify a confirmation target for estimatefee.
+Alternatively, the user can specify totalFee, or use RPC settxfee to set a higher fee rate.
+At a minimum, the new fee rate must be high enough to pay an additional new relay fee (incrementalfee
+returned by getnetworkinfo) to enter the node's mempool.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;txid&quot;         (string, required) The txid to be bumped</li>
+<li>&quot;options&quot;      (object, optional)
+{
+&quot;confTarget&quot;        (numeric, optional) Confirmation target (in blocks)
+&quot;totalFee&quot;          (numeric, optional) Total fee (NOT feerate) to pay, in satoshis.
+In rare cases, the actual fee paid might be slightly higher than the specified
+totalFee if the tx change output has to be removed because it is too close to
+the dust threshold.
+&quot;replaceable&quot;       (boolean, optional, default true) Whether the new transaction should still be
+marked bip-125 replaceable. If true, the sequence numbers in the transaction will
+be left unchanged from the original. If false, any input sequence numbers in the
+original transaction that were less than 0xfffffffe will be increased to 0xfffffffe
+so the new transaction will not be explicitly bip-125 replaceable (though it may
+still be replaceable in practice, for example if it has unconfirmed ancestors which
+are replaceable).
+&quot;estimate_mode&quot;     (string, optional, default=UNSET) The fee estimate mode, must be one of:
+&quot;UNSET&quot;
+&quot;ECONOMICAL&quot;
+&quot;CONSERVATIVE&quot;
+}</li>
+</ol>
+<h2>Result:</h2>
+<p>{
+&quot;txid&quot;:    &quot;value&quot;,  (string)  The id of the new transaction
+&quot;origfee&quot;:  n,         (numeric) Fee of the replaced transaction
+&quot;fee&quot;:      n,         (numeric) Fee of the new transaction
+&quot;errors&quot;:  [ str... ] (json array of strings) Errors encountered during processing (may be empty)
+}</p>
+<h2>Examples:</h2>
+<p>Bump the fee, get the new transaction's txid
+<code>particl-cli bumpfee &lt;txid&gt;</code></p>

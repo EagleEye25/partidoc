@@ -1,0 +1,25 @@
+<h2>getblockhashes timestamp</h2>
+<p>Returns array of hashes of blocks within the timestamp range provided.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>high         (numeric, required) The newer block timestamp</li>
+<li>low          (numeric, required) The older block timestamp</li>
+<li>options      (string, required) A json object
+{
+&quot;noOrphans&quot;:true   (boolean) will only include blocks on the main chain
+&quot;logicalTimes&quot;:true   (boolean) will include logical timestamps with hashes
+}</li>
+</ol>
+<h2>Result:</h2>
+<p>[
+&quot;hash&quot;         (string) The block hash
+]
+[
+{
+&quot;blockhash&quot;: (string) The block hash
+&quot;logicalts&quot;: (numeric) The logical timestamp
+}
+]</p>
+<h2>Examples:</h2>
+<p><code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getblockhashes&quot;, &quot;params&quot;: [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code>
+<code>particl-cli getblockhashes 1231614698 1231024505 '{&quot;noOrphans&quot;:false, &quot;logicalTimes&quot;:true}'</code></p>

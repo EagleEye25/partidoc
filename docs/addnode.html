@@ -1,0 +1,11 @@
+<h2>addnode &quot;node&quot; &quot;add|remove|onetry&quot;</h2>
+<p>Attempts to add or remove a node from the addnode list.
+Or try a connection to a node once.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;node&quot;     (string, required) The node (see getpeerinfo for nodes)</li>
+<li>&quot;command&quot;  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once</li>
+</ol>
+<h2>Examples:</h2>
+<p><code>particl-cli addnode &quot;192.168.0.6:51738&quot; &quot;onetry&quot;</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;addnode&quot;, &quot;params&quot;: [&quot;192.168.0.6:51738&quot;, &quot;onetry&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

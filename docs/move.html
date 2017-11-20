@@ -1,0 +1,19 @@
+<h2>move &quot;fromaccount&quot; &quot;toaccount&quot; amount ( minconf &quot;comment&quot; )</h2>
+<p>DEPRECATED. Move a specified amount from one account in your wallet to another.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;fromaccount&quot;   (string, required) The name of the account to move funds from. May be the default account using &quot;&quot;.</li>
+<li>&quot;toaccount&quot;     (string, required) The name of the account to move funds to. May be the default account using &quot;&quot;.</li>
+<li>amount            (numeric) Quantity of PART to move between accounts.</li>
+<li>(dummy)           (numeric, optional) Ignored. Remains for backward compatibility.</li>
+<li>&quot;comment&quot;       (string, optional) An optional comment, stored in the wallet only.</li>
+</ol>
+<h2>Result:</h2>
+<p>true|false           (boolean) true if successful.</p>
+<h2>Examples:</h2>
+<p>Move 0.01 PART from the default account to the account named tabby
+<code>particl-cli move &quot;&quot; &quot;tabby&quot; 0.01</code></p>
+<p>Move 0.01 PART timotei to akiko with a comment and funds have 6 confirmations
+<code>particl-cli move &quot;timotei&quot; &quot;akiko&quot; 0.01 6 &quot;happy birthday!&quot;</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;move&quot;, &quot;params&quot;: [&quot;timotei&quot;, &quot;akiko&quot;, 0.01, 6, &quot;happy birthday!&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

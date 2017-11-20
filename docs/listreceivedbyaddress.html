@@ -1,0 +1,28 @@
+<h2>listreceivedbyaddress ( minconf include_empty include_watchonly)</h2>
+<p>List balances by receiving address.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>minconf           (numeric, optional, default=1) The minimum number of confirmations before payments are included.</li>
+<li>include_empty     (bool, optional, default=false) Whether to include addresses that haven't received any payments.</li>
+<li>include_watchonly (bool, optional, default=false) Whether to include watch-only addresses (see 'importaddress').</li>
+</ol>
+<h2>Result:</h2>
+<p>[
+{
+&quot;involvesWatchonly&quot; : true,        (bool) Only returned if imported addresses were involved in transaction
+&quot;address&quot; : &quot;receivingaddress&quot;,  (string) The receiving address
+&quot;account&quot; : &quot;accountname&quot;,       (string) DEPRECATED. The account of the receiving address. The default account is &quot;&quot;.
+&quot;amount&quot; : x.xxx,                  (numeric) The total amount in PART received by the address
+&quot;confirmations&quot; : n,               (numeric) The number of confirmations of the most recent transaction included
+&quot;label&quot; : &quot;label&quot;,               (string) A comment for the address/transaction, if any
+&quot;txids&quot;: [
+n,                                (numeric) The ids of transactions received with the address
+...
+]
+}
+,...
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli listreceivedbyaddress</code>
+<code>particl-cli listreceivedbyaddress 6 true</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;listreceivedbyaddress&quot;, &quot;params&quot;: [6, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

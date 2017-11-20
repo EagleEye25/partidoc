@@ -1,0 +1,25 @@
+<h2>getaddressutxos</h2>
+<p>Returns all unspent outputs for an address (requires addressindex to be enabled).</p>
+<h2>Arguments:</h2>
+<p>{
+&quot;addresses&quot;
+[
+&quot;address&quot;  (string) The base58check encoded address
+,...
+],
+&quot;chainInfo&quot;  (boolean) Include chain info with results
+}</p>
+<p>Result
+[
+{
+&quot;address&quot;  (string) The address base58check encoded
+&quot;txid&quot;  (string) The output txid
+&quot;height&quot;  (number) The block height
+&quot;outputIndex&quot;  (number) The output index
+&quot;script&quot;  (strin) The script hex encoded
+&quot;satoshis&quot;  (number) The number of satoshis of the output
+}
+]</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getaddressutxos '{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}'</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getaddressutxos&quot;, &quot;params&quot;: [{&quot;addresses&quot;: [&quot;Pb7FLL3DyaAVP2eGfRiEkj4U8ZJ3RHLY9g&quot;]}] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

@@ -1,0 +1,22 @@
+<h2>encryptwallet &quot;passphrase&quot;</h2>
+<p>Encrypts the wallet with 'passphrase'. This is for first time encryption.
+After this, any calls that interact with private keys such as sending or signing
+will require the passphrase to be set prior the making these calls.
+Use the walletpassphrase call for this, and then walletlock call.
+If the wallet is already encrypted, use the walletpassphrasechange call.
+Note that this will shutdown the server.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;passphrase&quot;    (string) The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.</li>
+</ol>
+<h2>Examples:</h2>
+<p>Encrypt your wallet
+<code>particl-cli encryptwallet &quot;my pass phrase&quot;</code></p>
+<p>Now set the passphrase to use the wallet, such as for signing or sending particl
+<code>particl-cli walletpassphrase &quot;my pass phrase&quot;</code></p>
+<p>Now we can do something like sign
+<code>particl-cli signmessage &quot;address&quot; &quot;test message&quot;</code></p>
+<p>Now lock the wallet again by removing the passphrase
+<code>particl-cli walletlock</code></p>
+<p>As a json rpc call
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;encryptwallet&quot;, &quot;params&quot;: [&quot;my pass phrase&quot;] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

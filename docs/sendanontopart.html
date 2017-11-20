@@ -1,0 +1,22 @@
+<h2>sendanontopart&quot;address&quot; amount ( &quot;comment&quot; &quot;comment-to&quot; subtractfeefromamount &quot;narration&quot; ringsize inputs_per_sig)</h2>
+<p>Send an amount of anon part in a payment to a given address.</p>
+<h2>Arguments:</h2>
+<ol>
+<li>&quot;address&quot;     (string, required) The particl address to send to.</li>
+<li>&quot;amount&quot;      (numeric or string, required) The amount in PART to send. eg 0.1</li>
+<li>&quot;comment&quot;     (string, optional) A comment used to store what the transaction is for.
+This is not part of the transaction, just kept in your wallet.</li>
+<li>&quot;comment_to&quot;  (string, optional) A comment to store the name of the person or organization
+to which you're sending the transaction. This is not part of the
+transaction, just kept in your wallet.</li>
+<li>subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.
+The recipient will receive less PART than you enter in the amount field.</li>
+<li>&quot;narration&quot;   (string, optional) Up to 24 characters sent with the transaction.
+The narration is stored in the blockchain and is sent encrypted when destination is a stealth address and uncrypted otherwise.</li>
+<li>ringsize        (int, optional, default=4).</li>
+<li>inputs_per_sig  (int, optional, default=64).</li>
+</ol>
+<h2>Result:</h2>
+<p>&quot;txid&quot;           (string) The transaction id.</p>
+<h2>Examples:</h2>
+<p><code>particl-cli sendanontopart &quot;SPGyji8uZFip6H15GUfj6bsutRVLsCyBFL3P7k7T7MUDRaYU8GfwUHpfxonLFAvAwr2RkigyGfTgWMfzLAAP8KMRHq7RE8cwpEEekH&quot; 0.1</code></p>

@@ -1,0 +1,38 @@
+<h2>getnetworkinfo</h2>
+<p>Returns an object containing various state info regarding P2P networking.</p>
+<h2>Result:</h2>
+<p>{
+&quot;version&quot;: xxxxx,                      (numeric) the server version
+&quot;subversion&quot;: &quot;/Satoshi:x.x.x/&quot;,     (string) the server subversion string
+&quot;protocolversion&quot;: xxxxx,              (numeric) the protocol version
+&quot;localservices&quot;: &quot;xxxxxxxxxxxxxxxx&quot;, (string) the services we offer to the network
+&quot;localservices_str&quot;: &quot;string&quot;,       (string) the services we offer to the network, human readable
+&quot;localrelay&quot;: true|false,              (bool) true if transaction relay is requested from peers
+&quot;timeoffset&quot;: xxxxx,                   (numeric) the time offset
+&quot;connections&quot;: xxxxx,                  (numeric) the number of connections
+&quot;networkactive&quot;: true|false,           (bool) whether p2p networking is enabled
+&quot;networks&quot;: [                          (array) information per network
+{
+&quot;name&quot;: &quot;xxx&quot;,                     (string) network (ipv4, ipv6 or onion)
+&quot;limited&quot;: true|false,               (boolean) is the network limited using -onlynet?
+&quot;reachable&quot;: true|false,             (boolean) is the network reachable?
+&quot;proxy&quot;: &quot;host:port&quot;               (string) the proxy that is used for this network, or empty if none
+&quot;proxy_randomize_credentials&quot;: true|false,  (string) Whether randomized credentials are used
+}
+,...
+],
+&quot;relayfee&quot;: x.xxxxxxxx,                (numeric) minimum relay fee for transactions in PART/kB
+&quot;incrementalfee&quot;: x.xxxxxxxx,          (numeric) minimum fee increment for mempool limiting or BIP 125 replacement in PART/kB
+&quot;localaddresses&quot;: [                    (array) list of local addresses
+{
+&quot;address&quot;: &quot;xxxx&quot;,                 (string) network address
+&quot;port&quot;: xxx,                         (numeric) network port
+&quot;score&quot;: xxx                         (numeric) relative score
+}
+,...
+]
+&quot;warnings&quot;: &quot;...&quot;                    (string) any network warnings
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getnetworkinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getnetworkinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>

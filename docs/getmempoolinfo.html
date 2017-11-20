@@ -1,0 +1,13 @@
+<h2>getmempoolinfo</h2>
+<p>Returns details on the active state of the TX memory pool.</p>
+<h2>Result:</h2>
+<p>{
+&quot;size&quot;: xxxxx,               (numeric) Current tx count
+&quot;bytes&quot;: xxxxx,              (numeric) Sum of all virtual transaction sizes as defined in BIP 141. Differs from actual serialized size because witness data is discounted
+&quot;usage&quot;: xxxxx,              (numeric) Total memory usage for the mempool
+&quot;maxmempool&quot;: xxxxx,         (numeric) Maximum memory usage for the mempool
+&quot;mempoolminfee&quot;: xxxxx       (numeric) Minimum feerate (PART per KB) for tx to be accepted
+}</p>
+<h2>Examples:</h2>
+<p><code>particl-cli getmempoolinfo</code>
+<code>curl --user myusername --data-binary '{&quot;jsonrpc&quot;: &quot;1.0&quot;, &quot;id&quot;:&quot;curltest&quot;, &quot;method&quot;: &quot;getmempoolinfo&quot;, &quot;params&quot;: [] }' -H 'content-type: text/plain;' http://127.0.0.1:51935/</code></p>
